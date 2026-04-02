@@ -6,10 +6,30 @@ const Login = () => {
   const [rememberEmail, setRememberEmail] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login attempted:', { email, password, rememberEmail });
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+  
+      }),
+    });
+
+    const data = await response.json();
+
+    console.log("Sent successfully:", data);
+
+  } catch (error) {
+    console.error("Error sending data:", error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
