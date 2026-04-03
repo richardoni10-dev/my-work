@@ -80,7 +80,7 @@ const Login = () => {
             Sign in to access your email
           </h1>
 
-          <form onSubmit="handleSubmit(event)" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* EMAIL*/}
             <div>
               <input
